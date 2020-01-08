@@ -1,180 +1,140 @@
-import React, { Component } from "react";
+import React from 'react';
+import Avatar from '@material-ui/core/Avatar';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 
-// reactstrap components
-import {
-    Button,
-    Card,
-    CardHeader,
-    CardBody,
-    FormGroup,
-    Form,
-    Input,
-    InputGroupAddon,
-    InputGroupText,
-    InputGroup,
-    Container,
-    Row,
-    Col
-} from "reactstrap";
-
-import DemoNavbar from '../components/Navbar/Navbar'
-import SimpleFooter from '../components/Footer/SimpleFooter'
-
-class Register extends Component {
-    componentDidMount() {
-        document.documentElement.scrollTop = 0;
-        document.scrollingElement.scrollTop = 0;
-        this.refs.main.scrollTop = 0;
-    }
-
-    render() {
-        return (
-            <>
-                <DemoNavbar />
-                <main ref="main">
-                    <section className="section section-shaped section-lg">
-                        <div className="shape shape-style-1 bg-gradient-default">
-                            <span />
-                            <span />
-                            <span />
-                            <span />
-                            <span />
-                            <span />
-                            <span />
-                            <span />
-                        </div>
-                        <Container className="pt-lg-md">
-                            <Row className="justify-content-center">
-                                <Col lg="5">
-                                    <Card className="bg-secondary shadow border-0">
-                                        <CardHeader className="bg-white pb-5">
-                                            <div className="text-muted text-center mb-3">
-                                                <small>Sign up with</small>
-                                            </div>
-                                            <div className="text-center">
-                                                <Button
-                                                    className="btn-neutral btn-icon mr-4"
-                                                    color="default"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <span className="btn-inner--icon mr-1">
-                                                        <img
-                                                            alt="..."
-                                                            src={require("assets/img/icons/common/github.svg")}
-                                                        />
-                                                    </span>
-                                                    <span className="btn-inner--text">Github</span>
-                                                </Button>
-                                                <Button
-                                                    className="btn-neutral btn-icon ml-1"
-                                                    color="default"
-                                                    href="#pablo"
-                                                    onClick={e => e.preventDefault()}
-                                                >
-                                                    <span className="btn-inner--icon mr-1">
-                                                        <img
-                                                            alt="..."
-                                                            src={require("assets/img/icons/common/google.svg")}
-                                                        />
-                                                    </span>
-                                                    <span className="btn-inner--text">Google</span>
-                                                </Button>
-                                            </div>
-                                        </CardHeader>
-                                        <CardBody className="px-lg-5 py-lg-5">
-                                            <div className="text-center text-muted mb-4">
-                                                <small>Or sign up with credentials</small>
-                                            </div>
-                                            <Form role="form">
-                                                <FormGroup>
-                                                    <InputGroup className="input-group-alternative mb-3">
-                                                        <InputGroupAddon addonType="prepend">
-                                                            <InputGroupText>
-                                                                <i className="ni ni-hat-3" />
-                                                            </InputGroupText>
-                                                        </InputGroupAddon>
-                                                        <Input placeholder="Name" type="text" />
-                                                    </InputGroup>
-                                                </FormGroup>
-                                                <FormGroup>
-                                                    <InputGroup className="input-group-alternative mb-3">
-                                                        <InputGroupAddon addonType="prepend">
-                                                            <InputGroupText>
-                                                                <i className="ni ni-email-83" />
-                                                            </InputGroupText>
-                                                        </InputGroupAddon>
-                                                        <Input placeholder="Email" type="email" />
-                                                    </InputGroup>
-                                                </FormGroup>
-                                                <FormGroup>
-                                                    <InputGroup className="input-group-alternative">
-                                                        <InputGroupAddon addonType="prepend">
-                                                            <InputGroupText>
-                                                                <i className="ni ni-lock-circle-open" />
-                                                            </InputGroupText>
-                                                        </InputGroupAddon>
-                                                        <Input
-                                                            placeholder="Password"
-                                                            type="password"
-                                                            autoComplete="off"
-                                                        />
-                                                    </InputGroup>
-                                                </FormGroup>
-                                                <div className="text-muted font-italic">
-                                                    <small>
-                                                        password strength:{" "}
-                                                        <span className="text-success font-weight-700">
-                                                            strong
-                                </span>
-                                                    </small>
-                                                </div>
-                                                <Row className="my-4">
-                                                    <Col xs="12">
-                                                        <div className="custom-control custom-control-alternative custom-checkbox">
-                                                            <input
-                                                                className="custom-control-input"
-                                                                id="customCheckRegister"
-                                                                type="checkbox"
-                                                            />
-                                                            <label
-                                                                className="custom-control-label"
-                                                                htmlFor="customCheckRegister"
-                                                            >
-                                                                <span>
-                                                                    I agree with the{" "}
-                                                                    <a
-                                                                        href="#pablo"
-                                                                        onClick={e => e.preventDefault()}
-                                                                    >
-                                                                        Privacy Policy
-                                      </a>
-                                                                </span>
-                                                            </label>
-                                                        </div>
-                                                    </Col>
-                                                </Row>
-                                                <div className="text-center">
-                                                    <Button
-                                                        className="mt-4"
-                                                        color="primary"
-                                                        type="button"
-                                                    >
-                                                        Create account
-                              </Button>
-                                                </div>
-                                            </Form>
-                                        </CardBody>
-                                    </Card>
-                                </Col>
-                            </Row>
-                        </Container>
-                    </section>
-                </main>
-                <SimpleFooter />
-            </>
-        );
-    }
+function Copyright() {
+  return (
+    <Typography variant="body2" color="textSecondary" align="center">
+      {'Copyright © '}
+      <Link color="inherit" href="https://material-ui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
 }
 
-export default Register
+const useStyles = makeStyles(theme => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(3),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+export default function Register() {
+  const classes = useStyles();
+
+  return (
+    <Container component="main" maxWidth="xs">
+      <CssBaseline />
+      <div className={classes.paper}>
+        <Avatar className={classes.avatar}>
+          <LockOutlinedIcon />
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Sign up
+        </Typography>
+        <form className={classes.form} noValidate>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                autoComplete="fname"
+                name="firstName"
+                variant="outlined"
+                required
+                fullWidth
+                id="firstName"
+                label="First Name"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="lastName"
+                label="Last Name"
+                name="lastName"
+                autoComplete="lname"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="current-password"
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FormControlLabel
+                control={<Checkbox value="allowExtraEmails" color="primary" />}
+                label="I want to receive inspiration, marketing promotions and updates via email."
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+          >
+            Sign Up
+          </Button>
+          <Grid container justify="flex-end">
+            <Grid item>
+              <Link href="#" variant="body2">
+                Already have an account? Sign in
+              </Link>
+            </Grid>
+          </Grid>
+        </form>
+      </div>
+      <Box mt={5}>
+        <Copyright />
+      </Box>
+    </Container>
+  );
+}

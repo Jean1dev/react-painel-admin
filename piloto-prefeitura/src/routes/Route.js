@@ -1,8 +1,6 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 
-import Login from '../views/Register'
-
 export default function RouteWrapper({
     component: Component,
     isPrivate = false,

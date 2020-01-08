@@ -1,19 +1,21 @@
-import React, { Component } from 'react'
-import Header from '../components/Navbar/AdminNavbar'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Header from '../components/Header'
 
-class Dashboard extends Component {
+const useStyles = makeStyles(theme => ({
+    root: {
+        display: 'flex',
+    },
+}));
 
-    render() {
-        return (
-            <>
-                <Header></Header>
-                <div>
+export default function Dashboard() {
+    const classes = useStyles();
 
-                    Dashboard
-            </div>
-            </>
-        )
-    }
+    return (
+        <div className={classes.root}>
+            <CssBaseline />
+            <Header></Header>
+        </div>
+    );
 }
-
-export default Dashboard
