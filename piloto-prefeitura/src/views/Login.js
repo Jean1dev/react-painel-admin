@@ -19,7 +19,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        IF tecnologia e comunicacao
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -110,6 +110,11 @@ export default function Login() {
           </Grid>
         </form>
       </div>
+
+      <Link href="/dashboard" variant="body2">
+                {"Go to dashBoard"}
+              </Link>
+
       <Box mt={8}>
         <Copyright />
       </Box>

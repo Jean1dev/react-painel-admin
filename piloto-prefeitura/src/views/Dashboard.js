@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from '../components/Header'
+import Chat from '../components/Chat'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -16,6 +17,7 @@ export default function Dashboard() {
         <div className={classes.root}>
             <CssBaseline />
             <Header></Header>
+            <Chat></Chat>
         </div>
     );
 }
