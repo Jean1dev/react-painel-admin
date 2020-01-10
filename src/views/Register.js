@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -12,19 +12,12 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-      IF tecnologia e comunicacao
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import Copyright from '../components/Copyright'
+import { useDispatch } from 'react-redux'
+import { _signUp } from '../redux/modules/Authenticate/action'
+import useForm from '../hooks/useForm'
+import toastError from '../utils/toast-error'
+import * as Yup from 'yup'
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -44,10 +37,32 @@ const useStyles = makeStyles(theme => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
+}))
+
+const schema = Yup.object().shape({
+  name: Yup.string().required('O nome é obrigatorio'),
+  email: Yup.string().email('Insira um email valido').required(),
+  password: Yup.string().min(6, 'senha de no minimo 6 caracteres').required('A senha é obrigatoria')
+})
 
 export default function Register() {
-  const classes = useStyles();
+  const classes = useStyles()
+  const dispatch = useDispatch()
+  const [{ values, loading }, handleChange, handleSubmit] = useForm()
+
+  async function submitForm() {
+    try {
+      await schema.validate(values, {
+        abortEarly: false,
+        stripUnknown: true
+      })
+
+      dispatch(_signUp(values))
+    } catch (error) {
+      const { message } = error
+      toastError(message)
+    }
+  }
 
   return (
     <Container component="main" maxWidth="xs">
@@ -59,18 +74,20 @@ export default function Register() {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={handleSubmit(submitForm)}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                name="firstName"
+                name="name"
                 variant="outlined"
                 required
                 fullWidth
                 id="firstName"
                 label="First Name"
                 autoFocus
+                onChange={handleChange}
+                
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -82,6 +99,7 @@ export default function Register() {
                 label="Last Name"
                 name="lastName"
                 autoComplete="lname"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -93,6 +111,7 @@ export default function Register() {
                 label="Email Address"
                 name="email"
                 autoComplete="email"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -105,6 +124,7 @@ export default function Register() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
