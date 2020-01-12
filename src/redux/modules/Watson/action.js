@@ -26,7 +26,7 @@ const watsonRequestError = err => {
         details: err
     }
 }
-
+// data.data.output.text[0]
 export const watsonTalks = (message, context) => {
     return dispatch => {
         dispatch(watsonRequest())

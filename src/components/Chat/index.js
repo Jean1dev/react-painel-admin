@@ -14,6 +14,13 @@ class Chat extends Component {
         this.props.watsonInit()
     }
 
+    componentDidUpdate() {
+        if (this.props.messages) {
+            const { result } = this.props.messages.data
+            console.log('componentDidUpdate', result.output.generic[0])
+        }
+    }
+
     handleNewUserMessage = (newMessage) => {
         this.props.sendToWatson(newMessage, this.props.watsonContext)
     }
@@ -34,7 +41,6 @@ class Chat extends Component {
 
 const mapDispatchToProps = dispatch => {
     return {
-        //   sendText: msg => dispatch(sendMessage(msg)),
         sendToWatson: (msg, context) => dispatch(watsonTalks(msg, context)),
         watsonInit: () => dispatch(watsonInit())
     }
@@ -42,7 +48,8 @@ const mapDispatchToProps = dispatch => {
 
 const mapStateToProps = state => {
     return {
-        watsonContext: state.watsonSession.watsonContext
+        watsonContext: state.watsonSession.watsonContext,
+        messages: state.watson.response
     }
   }
 
