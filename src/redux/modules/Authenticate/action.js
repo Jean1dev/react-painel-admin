@@ -30,17 +30,26 @@ function signFailure() {
     }
 }
 
-function signOut() {
-    return {
-        type: '@auth/SIGN_OUT'
-    }
-}
+// function signOut() {
+//     return {
+//         type: '@auth/SIGN_OUT'
+//     }
+// }
 
 export function _signIn(credentials) {
     return dispatch => {
         const { name, email } = credentials
         dispatch(signInRequest(name, email))
-        
+        axios.post('/register/user/login', credentials)
+            .then(data => {
+                const { token, user } = data.data
+                dispatch(signInSuccess(token, user))
+                axios.defaults.headers['Authorization'] = `Bearer ${token}`
+            })
+            .catch(() => {
+                dispatch(signFailure())
+                error('Erro ao efetuar login')
+            })
     }
 }
 
@@ -54,6 +63,9 @@ export function _signUp(credentials) {
                 dispatch(signInSuccess(token, user))
                 axios.defaults.headers['Authorization'] = `Bearer ${token}`
             })
-            .catch(() => error('Erro ao efetuar cadastro'))
+            .catch(() => {
+                dispatch(signFailure())
+                error('Erro ao efetuar cadastro')
+            })
     }
 }

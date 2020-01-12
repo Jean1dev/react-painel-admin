@@ -10,6 +10,7 @@ import 'react-chat-widget/lib/styles.css';
 class Chat extends Component {
 
     componentDidMount() {
+        addResponseMessage("oi")
         this.props.watsonInit()
     }
 

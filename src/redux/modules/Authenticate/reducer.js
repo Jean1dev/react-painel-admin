@@ -29,7 +29,6 @@ export default function reducer(state = INITIAL_STATE, action) {
                 signed: false,
                 loading: false
             }
+        default: return state
     }
-
-    return state
 }

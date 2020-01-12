@@ -31,14 +31,6 @@ export default function watsonTalks(state = INITIAL_STATE, action) {
                 response: null,
             }
 
-        case 'WATSON_REQUEST_ERROR':
-            return {
-                load: false,
-                error: true,
-                detailError: action.details,
-                response: null,
-            }
-
         default: return state
     }
 }

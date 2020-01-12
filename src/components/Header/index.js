@@ -1,20 +1,21 @@
-import React from 'react';
-import clsx from 'clsx';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import MenuIcon from '@material-ui/icons/Menu';
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import Drawer from '@material-ui/core/Drawer';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import React from 'react'
+import clsx from 'clsx'
+import { makeStyles } from '@material-ui/core/styles'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton'
+import Badge from '@material-ui/core/Badge'
+import MenuIcon from '@material-ui/icons/Menu'
+import NotificationsIcon from '@material-ui/icons/Notifications'
+import Drawer from '@material-ui/core/Drawer'
+import List from '@material-ui/core/List'
+import Divider from '@material-ui/core/Divider'
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
 import { mainListItems, secondaryListItems } from '../ItemMenu'
+import Profile from '../Profile'
 
-const drawerWidth = 240;
+const drawerWidth = 240
 
 const useStyles = makeStyles(theme => ({
     appBar: {
@@ -68,15 +69,15 @@ const useStyles = makeStyles(theme => ({
             width: theme.spacing(9),
         },
     },
-}));
+}))
 
 export default function Header() {
     const classes = useStyles();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(false)
 
     const handleDrawerClose = () => {
         setOpen(false)
-    };
+    }
 
     const handleDrawerOpen = () => {
         setOpen(true)
@@ -103,6 +104,7 @@ export default function Header() {
                             <NotificationsIcon />
                         </Badge>
                     </IconButton>
+                    <Profile></Profile>
                 </Toolbar>
             </AppBar>
             <Drawer
@@ -123,6 +125,6 @@ export default function Header() {
                 <List>{secondaryListItems}</List>
             </Drawer>
         </>
-    );
+    )
 }
 
