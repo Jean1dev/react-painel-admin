@@ -4,7 +4,7 @@ const INITIAL_STATE = {
 }
 
 export default function reducer(state = INITIAL_STATE, action) {
-    if (action.type === 'WATSON_SESSION') return { watsonContext: action.watsonContext, date: new Date() }
+    if (action.type === 'WATSON_SESSION') return { watsonContext: action.watsonContext.session, date: new Date() }
     return state
 }
 

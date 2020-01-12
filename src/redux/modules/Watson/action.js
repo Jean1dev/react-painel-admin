@@ -32,7 +32,7 @@ export const watsonTalks = (message, context) => {
         dispatch(watsonRequest())
         axios
             .post('/assistant/message', { message: message, session_id: context })
-            .then(data => dispatch(watsonRequestSuccess(data)))
+            .then(res => dispatch(watsonRequestSuccess(res.data)))
             .catch(err => {
                 error('Erro ao enviar mensagem')
                 dispatch(watsonRequestError(err))

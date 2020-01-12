@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Copyright from '../components/Copyright'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { _signUp } from '../redux/modules/Authenticate/action'
 import useForm from '../hooks/useForm'
 import toastError from '../utils/toast-error'
@@ -49,7 +49,8 @@ const schema = Yup.object().shape({
 export default function Register() {
   const classes = useStyles()
   const dispatch = useDispatch()
-  const [{ values, loading }, handleChange, handleSubmit] = useForm()
+  const [{ values }, handleChange, handleSubmit] = useForm()
+  const loading = useSelector(state => state.auth.loading)
 
   async function submitForm() {
     try {

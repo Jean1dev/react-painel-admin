@@ -1,12 +1,15 @@
 import { combineReducers } from 'redux'
 import watsonSession from '../modules/WatsonSession/reducer'
 import watson from '../modules/Watson/reducer'
-import auth from '../modules/Authenticate/reducer'
+import authenticate from '../modules/Authenticate/reducer'
+import persistReducers from './persistReducer'
 
-const rootReducer = combineReducers({
-    watsonSession,
-    watson,
-    auth
-})
+const auth = persistReducers(authenticate)
 
-export default rootReducer
+export default function handleReducers() {
+    return combineReducers({
+        auth,
+        watsonSession,
+        watson
+    })
+}

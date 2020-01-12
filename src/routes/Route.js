@@ -15,15 +15,15 @@ export default function RouteWrapper({
     }
 
     if (signed && !isPrivate) {
-        // return <Redirect to="/dashboard"></Redirect>
-        return (
-            <Route {...rest}
-                render={props => (
-                    <Layout>
-                        <Component {...props}></Component>
-                    </Layout>
-                )}></Route>
-        )
+        return <Redirect to="/dashboard"></Redirect>
+        // return (
+        //     <Route {...rest}
+        //         render={props => (
+        //             <Layout>
+        //                 <Component {...props}></Component>
+        //             </Layout>
+        //         )}></Route>
+        // )
     }
 
     return (

@@ -1,5 +1,6 @@
 import React from 'react'
 import Avatar from '@material-ui/core/Avatar'
+import Spinner from 'react-bootstrap/Spinner'
 import Button from '@material-ui/core/Button'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import TextField from '@material-ui/core/TextField'
@@ -13,7 +14,7 @@ import Typography from '@material-ui/core/Typography'
 import { makeStyles } from '@material-ui/core/styles'
 import Container from '@material-ui/core/Container'
 import Copyright from '../components/Copyright'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import useForm from '../hooks/useForm'
 import toastError from '../utils/toast-error'
 import { _signIn } from '../redux/modules/Authenticate/action'
@@ -48,6 +49,7 @@ export default function Login() {
   const classes = useStyles()
   const dispatch = useDispatch()
   const [{ values }, handleChange, handleSubmit] = useForm()
+  const loading = useSelector(state => state.auth.loading)
 
   async function submitForm() {
     try {
@@ -107,9 +109,14 @@ export default function Login() {
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
-          >
-            Sign In
+            className={classes.submit}>
+            {loading && <Spinner
+              as="span"
+              animation="grow"
+              size="sm"
+              role="status"
+              aria-hidden="true" />}
+            Login
           </Button>
           <Grid container>
             <Grid item xs>

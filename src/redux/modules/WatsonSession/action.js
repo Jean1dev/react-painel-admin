@@ -11,7 +11,7 @@ const watsonSession = sessionId => {
 export const watsonInit = () => {
     return dispatch => {
         axios.get('/assistant/session')
-            .then(res => dispatch(watsonSession(res.data.result.session_id)))
+            .then(res => dispatch(watsonSession(res.data)))
             .catch(() => error('Erro ao iniciar sessao com o Watson'))
     }
 }
