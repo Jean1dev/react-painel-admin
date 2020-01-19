@@ -1,5 +1,7 @@
 import axios from '../../../service/api'
 import error from '../../../utils/toast-error'
+import { watsonTalks } from '../Watson/action'
+import { store } from '../../index'
 
 const watsonSession = sessionId => {
     return {
@@ -11,7 +13,12 @@ const watsonSession = sessionId => {
 export const watsonInit = () => {
     return dispatch => {
         axios.get('/assistant/session')
-            .then(res => dispatch(watsonSession(res.data)))
+            .then(res => {
+                const { session } = res.data
+                const token = store.getState().auth.token
+                dispatch(watsonSession(res.data))
+                dispatch(watsonTalks(`Identificador unico:${token}`, session, { ignore: true }))
+            })
             .catch(() => error('Erro ao iniciar sessao com o Watson'))
     }
 }

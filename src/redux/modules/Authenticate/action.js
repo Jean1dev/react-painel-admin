@@ -1,5 +1,6 @@
 import axios from '../../../service/api'
 import error from '../../../utils/toast-error'
+import history from '../../../service/history'
 
 function signInRequest(email, password) {
     return {
@@ -45,10 +46,11 @@ export function _signIn(credentials) {
                 const { token, user } = data.data
                 dispatch(signInSuccess(token, user))
                 axios.defaults.headers['Authorization'] = `Bearer ${token}`
+                history.push('/dashboard')
             })
-            .catch(() => {
+            .catch(err => {
                 dispatch(signFailure())
-                error('Erro ao efetuar login')
+                error(err.response.data.error)
             })
     }
 }
@@ -62,10 +64,11 @@ export function _signUp(credentials) {
                 const { token, user } = data.data
                 dispatch(signInSuccess(token, user))
                 axios.defaults.headers['Authorization'] = `Bearer ${token}`
+                history.push('/dashboard')
             })
-            .catch(() => {
+            .catch(err => {
                 dispatch(signFailure())
-                error('Erro ao efetuar cadastro')
+                error(err.response.data.error)
             })
     }
 }

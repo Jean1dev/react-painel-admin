@@ -97,7 +97,7 @@ export default function Header() {
                         <MenuIcon />
                     </IconButton>
                     <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-                        Dashboard
+                        Painel
               </Typography>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">

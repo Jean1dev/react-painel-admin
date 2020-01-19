@@ -11,6 +11,7 @@ import Chat from '../components/Chat'
 import MessageChart from '../components/MessageChart'
 import TotalMessages from '../components/TotalMessage'
 import Copyright from '../components/Copyright'
+import Maps from '../components/Maps'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -62,12 +63,13 @@ export default function Dashboard() {
                                 <TotalMessages />
                             </Paper>
                         </Grid>
-                        {/* Recent Orders */}
-                        {/* <Grid item xs={12}>
+                        
+                         <Grid item xs={6}>
                             <Paper className={classes.paper}>
-                                <Orders />
+                                <Maps />
                             </Paper>
-                        </Grid> */}
+                        </Grid> 
+
                     </Grid>
                     <Box pt={4}>
                         <Copyright />

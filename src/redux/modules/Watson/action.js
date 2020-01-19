@@ -27,11 +27,12 @@ const watsonRequestError = err => {
     }
 }
 // data.data.output.text[0]
-export const watsonTalks = (message, context) => {
+export const watsonTalks = (message, context, props) => {
     return dispatch => {
         dispatch(watsonRequest())
+        const payload = { message: message, session_id: context, props: props }
         axios
-            .post('/assistant/message', { message: message, session_id: context })
+            .post('/assistant/message', payload)
             .then(res => dispatch(watsonRequestSuccess(res.data)))
             .catch(err => {
                 error('Erro ao enviar mensagem')

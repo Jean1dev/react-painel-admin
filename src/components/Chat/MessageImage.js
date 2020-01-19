@@ -7,7 +7,7 @@ export default function MessageImage(props) {
     <>
     {props.data.title}
     <div>
-        <img src={props.data.img} width={200}></img>
+        <img alt="imagem" src={props.data.img} width={200}></img>
     </div>
     
     </>
