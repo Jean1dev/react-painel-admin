@@ -1,6 +1,13 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 import { store } from '../redux'
+import axios from '../service/api'
+
+function setTokenOnApi(token) {
+    if (token) {
+        axios.defaults.headers['Authorization'] = `Bearer ${token}`
+    }
+}
 
 export default function RouteWrapper({
     component: Component,
@@ -9,7 +16,8 @@ export default function RouteWrapper({
 }) {
     const Layout = Component
     const signed = store.getState().auth.signed
-    
+    setTokenOnApi(store.getState().auth.token)
+
     if (!signed && isPrivate) {
         return <Redirect to="/"></Redirect>
     }

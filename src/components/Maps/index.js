@@ -4,16 +4,22 @@ import Spinner from 'react-bootstrap/Spinner'
 import Mark from './Mark'
 import api from '../../service/api'
 
+function updateUserWithLocation(stateLocation, newLocation) {
+    if (!stateLocation) {
+        api.post('/register/user/insert-address', {
+            lat: newLocation.coords.latitude,
+            lng: newLocation.coords.longitude
+        })
+    }
+}
+
 export default function Maps() {
     const [geoLocation, setGeolocation] = React.useState(null)
     const zoom = 15
 
     navigator.geolocation.getCurrentPosition(location => {
+        updateUserWithLocation(geoLocation, location)
         setGeolocation({
-            lat: location.coords.latitude,
-            lng: location.coords.longitude
-        })
-        api.post('/register/user/insert-address', {
             lat: location.coords.latitude,
             lng: location.coords.longitude
         })

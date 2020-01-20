@@ -15,9 +15,9 @@ export const watsonInit = () => {
         axios.get('/assistant/session')
             .then(res => {
                 const { session } = res.data
-                const token = store.getState().auth.token
+                const id = store.getState().auth.id
                 dispatch(watsonSession(res.data))
-                dispatch(watsonTalks(`Identificador unico:${token}`, session, { ignore: true }))
+                dispatch(watsonTalks(`Identificador unico:${id}`, session, { ignore: true }))
             })
             .catch(() => error('Erro ao iniciar sessao com o Watson'))
     }
