@@ -16,7 +16,7 @@ install_dependencies:
   artifacts:
     paths:
       - node_modules/
-      - dist/
+      - build/
 
 production:
   stage: deploy_prod
@@ -26,7 +26,7 @@ production:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
-    - cd dist
+    - cd build
     - dpl --provider=heroku --app=mvp-if-tecnologia --api-key=$HEROKU_API_KEY --skip_cleanup
   only:
     - master
