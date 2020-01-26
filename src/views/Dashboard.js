@@ -12,6 +12,7 @@ import MessageChart from '../components/MessageChart'
 import TotalMessages from '../components/TotalMessage'
 import Copyright from '../components/Copyright'
 import Maps from '../components/Maps'
+import Solicitacao from './Solicitacoes'
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -19,65 +20,74 @@ const useStyles = makeStyles(theme => ({
     },
     appBarSpacer: theme.mixins.toolbar,
     content: {
-      flexGrow: 1,
-      height: '100vh',
-      overflow: 'auto',
+        flexGrow: 1,
+        height: '100vh',
+        overflow: 'auto',
     },
     container: {
-      paddingTop: theme.spacing(4),
-      paddingBottom: theme.spacing(4),
+        paddingTop: theme.spacing(4),
+        paddingBottom: theme.spacing(4),
     },
     paper: {
-      padding: theme.spacing(2),
-      display: 'flex',
-      overflow: 'auto',
-      flexDirection: 'column',
+        padding: theme.spacing(2),
+        display: 'flex',
+        overflow: 'auto',
+        flexDirection: 'column',
     },
     fixedHeight: {
-      height: 240,
+        height: 240,
     },
 }))
 
 export default function Dashboard() {
     const classes = useStyles()
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
-
     return (
         <>
-        <div className={classes.root}>
-            <CssBaseline />
-            <Header></Header>
-            <main className={classes.content}>
-                <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
-                    <Grid container spacing={3}>
-                        
-                        <Grid item xs={12} md={8} lg={9}>
-                            <Paper className={fixedHeightPaper}>
-                                <MessageChart />
-                            </Paper>
-                        </Grid>
-                        
-                        <Grid item xs={12} md={4} lg={3}>
-                            <Paper className={fixedHeightPaper}>
-                                <TotalMessages />
-                            </Paper>
-                        </Grid>
-                        
-                         <Grid item xs={6}>
-                            <Paper className={classes.paper}>
-                                <Maps />
-                            </Paper>
-                        </Grid> 
+            <div className={classes.root}>
+                <CssBaseline />
+                <Header></Header>
+                <main className={classes.content}>
+                    <div className={classes.appBarSpacer} />
+                    <Container maxWidth="lg" className={classes.container}>
+                        {window.location.pathname === '/dashboard' &&
+                            <Grid container spacing={3}>
 
-                    </Grid>
-                    <Box pt={4}>
-                        <Copyright />
-                    </Box>
-                </Container>
-            </main>
-        </div>
-        <Chat fullscreen={false}></Chat>
+                                <Grid item xs={12} md={8} lg={9}>
+                                    <Paper className={fixedHeightPaper}>
+                                        <MessageChart />
+                                    </Paper>
+                                </Grid>
+
+                                <Grid item xs={12} md={4} lg={3}>
+                                    <Paper className={fixedHeightPaper}>
+                                        <TotalMessages />
+                                    </Paper>
+                                </Grid>
+
+                                <Grid item xs={6}>
+                                    <Paper className={classes.paper}>
+                                        <Maps />
+                                    </Paper>
+                                </Grid>
+
+                            </Grid>
+                        }
+                        {window.location.pathname === '/solicitacao' && 
+                        <Grid item xs={12}>
+                            <Paper className={classes.paper}>
+                                <Solicitacao></Solicitacao>
+                            </Paper>    
+                        </Grid>
+                        }
+                        <Box pt={4}>
+                            <Copyright />
+                        </Box>
+                    </Container>
+                </main>
+            </div>
+            <Chat fullscreen={false}></Chat>
         </>
     )
 }
+

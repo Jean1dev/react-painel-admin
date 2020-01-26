@@ -35,7 +35,7 @@ export const watsonTalks = (message, context, props) => {
             .post('/assistant/message', payload)
             .then(res => dispatch(watsonRequestSuccess(res.data)))
             .catch(err => {
-                error('Erro ao enviar mensagem')
+                error('Erro ao enviar mensagem, atualize a pagina')
                 dispatch(watsonRequestError(err))
             })
     }
