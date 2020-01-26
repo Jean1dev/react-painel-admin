@@ -16,6 +16,7 @@ install_dependencies:
   artifacts:
     paths:
       - node_modules/
+      - dist/
 
 production:
   stage: deploy_prod
