@@ -2,6 +2,7 @@ image: node:latest
 
 stages:
   - build
+  - deploy_prod
 
 cache:
   paths:
@@ -11,6 +12,20 @@ install_dependencies:
   stage: build
   script:
     - npm install
+    - npm run build
   artifacts:
     paths:
       - node_modules/
+
+production:
+  stage: deploy_prod
+  image: ruby:latest
+  when: manual
+  script:
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
+    - cd dist
+    - dpl --provider=heroku --app=your-app-name --api-key=$HEROKU_API_KEY --skip_cleanup
+  only:
+    - master
