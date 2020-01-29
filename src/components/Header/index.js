@@ -12,7 +12,7 @@ import Drawer from '@material-ui/core/Drawer'
 import List from '@material-ui/core/List'
 import Divider from '@material-ui/core/Divider'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft'
-import { mainListItems, secondaryListItems } from '../ItemMenu'
+import SecondaryListItems, { mainListItems } from '../ItemMenu'
 import Profile from '../Profile'
 
 const drawerWidth = 240
@@ -122,7 +122,7 @@ export default function Header() {
                 <Divider />
                 <List>{mainListItems}</List>
                 <Divider />
-                <List>{secondaryListItems}</List>
+                <List><SecondaryListItems/></List>
             </Drawer>
         </>
     )

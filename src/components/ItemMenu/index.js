@@ -1,15 +1,18 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import history from '../../service/history'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import DashboardIcon from '@material-ui/icons/Dashboard'
 // import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-// import ListSubheader from '@material-ui/core/ListSubheader';
+import ListSubheader from '@material-ui/core/ListSubheader'
 // import PeopleIcon from '@material-ui/icons/People';
 // import BarChartIcon from '@material-ui/icons/BarChart';
 // import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment'
+import ExitToAppIcon from '@material-ui/icons/ExitToApp'
+import { _signOut } from '../../redux/modules/Authenticate/action'
 
 export const mainListItems = (
   <div>
@@ -46,14 +49,21 @@ export const mainListItems = (
   </div>
 );
 
-export const secondaryListItems = (
-  <div>
-    {/* <ListSubheader inset>Saved reports</ListSubheader>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
+export default function SecondaryListItems() {
+  const dispatch = useDispatch()
+
+  function logout() {
+    dispatch(_signOut())
+  }
+
+  return (
+    <div>
+      <ListSubheader inset>Outros</ListSubheader>
+      <ListItem button onClick={logout}>
+        <ListItemIcon>
+          <ExitToAppIcon />
+        </ListItemIcon>
+        {/* <ListItemText primary="Current month" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
@@ -65,7 +75,8 @@ export const secondaryListItems = (
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItem> */}
-  </div>
-);
+      <ListItemText primary="Year-end sale" /> */}
+      </ListItem>
+    </div>
+  )
+}

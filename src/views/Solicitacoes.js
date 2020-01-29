@@ -20,7 +20,7 @@ function createData(solicitacao) {
         name: solicitacao.usuario.name,
         situacao: solicitacao.situacao,
         descricao: solicitacao.solicitacao,
-        endereco: solicitacao.endereco
+        endereco: solicitacao.endereco || solicitacao.usuario.address
     }
 }
 

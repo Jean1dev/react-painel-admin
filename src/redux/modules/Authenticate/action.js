@@ -31,11 +31,19 @@ function signFailure() {
     }
 }
 
-// function signOut() {
-//     return {
-//         type: '@auth/SIGN_OUT'
-//     }
-// }
+function signOut() {
+    return {
+        type: '@auth/SIGN_OUT'
+    }
+}
+
+export function _signOut() {
+    console.log('action')
+    return dispatch => {
+        dispatch(signOut())
+        history.push('/')
+    }
+}
 
 export function _signIn(credentials) {
     return dispatch => {
