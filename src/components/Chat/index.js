@@ -67,9 +67,9 @@ class Chat extends Component {
             <>
                 <Widget
                     handleNewUserMessage={this.handleNewUserMessage}
-                    profileAvatar={"https://api.adorable.io/avatars/50/abott@adorable.pngCopy"}
-                    title="Cloudia"
-                    subtitle="Chatbot manjudo"
+                    profileAvatar={"https://cdn.dribbble.com/users/722835/screenshots/4082720/bot_icon.gif"}
+                    title="Carlos"
+                    subtitle="Assistente virtual"
                     handleQuickButtonClicked={e => this.handleQuickButtonClicked(e)}
                     badge={this.badge}
                     showCloseButton={this.props.fullscreen}
