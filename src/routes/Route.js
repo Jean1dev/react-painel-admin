@@ -1,5 +1,7 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
+import DefaultLayout from '../_layouts/default'
+import AuthLayout from '../_layouts/auth'
 import { store } from '../redux'
 import axios from '../service/api'
 
@@ -14,8 +16,8 @@ export default function RouteWrapper({
     isPrivate = false,
     ...rest
 }) {
-    const Layout = Component
     const signed = store.getState().auth.signed
+    const Layout = signed ? DefaultLayout : AuthLayout
     setTokenOnApi(store.getState().auth.token)
 
     if (!signed && isPrivate) {
