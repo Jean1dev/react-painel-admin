@@ -7,4 +7,5 @@ if (process.env.NODE_ENV === 'development' && false) {
     baseUrl = localWindowsUrl
 }
 
+// baseUrl = prodUrl
 export { baseUrl }

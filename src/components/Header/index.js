@@ -108,12 +108,11 @@ export default function Header() {
                 </Toolbar>
             </AppBar>
             <Drawer
-                variant="permanent"
+                // variant="permanent"
                 classes={{
                     paper: clsx(classes.drawerPaper, !open && classes.drawerPaperClose),
                 }}
-                open={open}
-            >
+                open={open}>
                 <div className={classes.toolbarIcon}>
                     <IconButton onClick={handleDrawerClose}>
                         <ChevronLeftIcon />
