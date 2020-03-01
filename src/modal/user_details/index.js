@@ -7,7 +7,7 @@ export default function UserDetails(props) {
 
   return (
     <>
-      <Modal show={props.show} onHide={handleClose}>
+      <Modal show={props.show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>

@@ -11,6 +11,11 @@ export default function reducer(state = INITIAL_STATE, action) {
             return {
                 loading: true
             }
+
+        case '@auth/SIGN_UP_REQUEST':
+            return {
+                loading: true
+            }
         
         case '@auth/SIGN_FAILURE':
             return {

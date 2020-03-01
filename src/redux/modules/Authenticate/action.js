@@ -76,7 +76,8 @@ export function _signUp(credentials) {
             })
             .catch(err => {
                 dispatch(signFailure())
-                error(err.response.data.error)
+                //TODO: tratar erro corretamente
+                error('Email ja cadastrado')
             })
     }
 }

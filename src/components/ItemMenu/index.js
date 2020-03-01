@@ -22,6 +22,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Painel" />
     </ListItem>
+    
     <ListItem button onClick={() => history.push('/solicitacao')}>
       <ListItemIcon>
         <AssignmentIcon />
