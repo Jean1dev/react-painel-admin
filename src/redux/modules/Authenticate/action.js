@@ -58,7 +58,8 @@ export function _signIn(credentials) {
             })
             .catch(err => {
                 dispatch(signFailure())
-                error(err.response.data.error)
+                console.log(err)
+                error('Ocorreu erro interno')
             })
     }
 }

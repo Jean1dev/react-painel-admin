@@ -7,5 +7,5 @@ if (process.env.NODE_ENV === 'development' && false) {
     baseUrl = localWindowsUrl
 }
 
-//baseUrl = prodUrl // so pra testar direto com as apis em producao
+baseUrl = prodUrl // so pra testar direto com as apis em producao
 export { baseUrl }

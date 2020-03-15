@@ -16,7 +16,7 @@ import VisibilityIcon from '@material-ui/icons/Visibility'
 import UserDetailModal from '../modal/user_details'
 import SolicitacaoDetailModal from '../modal/solicitacao_details'
 import Pagination from '../components/Pagination'
-import Spinner from 'react-bootstrap/Spinner'
+import Spinner from '../components/loader'
 import api from '../service/api'
 import moment from 'moment'
 import getClass from '../utils/get-class-situacao-solicitacao'
@@ -54,6 +54,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function Solicitacoes() {
     const classes = useStyles()
+    const [loading, setLoading] = useState(true)
     const [rows, setRows] = useState([])
     const [showModalUser, setShowModalUser] = useState(false)
     const [showModalEditSolicitacao, setshowModalEditSolicitacao] = useState(false)
@@ -71,6 +72,7 @@ export default function Solicitacoes() {
             const result = await api.get('/register/solicitacao', params)
             if (result.data) {
                 const x = result.data.map(createData)
+                setLoading(false)
                 setRows(x)
             }
         }
@@ -108,7 +110,7 @@ export default function Solicitacoes() {
         })
     }
 
-    if (!rows) return <Spinner animation="border" />
+    if (loading) return <Spinner/>
 
     if (showModalUser) return <UserDetailModal show close={closeUserDetailModal} />
 
