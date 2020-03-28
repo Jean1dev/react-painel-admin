@@ -22,31 +22,13 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Painel" />
     </ListItem>
-    
+
     <ListItem button onClick={() => history.push('/solicitacao')}>
       <ListItemIcon>
         <AssignmentIcon />
       </ListItemIcon>
       <ListItemText primary="Solicitacoes" />
     </ListItem>
-    {/* <ListItem button>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItem> */}
   </div>
 );
 
@@ -56,7 +38,7 @@ export default function SecondaryListItems() {
   function logout() {
     dispatch(_signOut())
   }
-
+  
   return (
     <div>
       <ListSubheader inset>Outros</ListSubheader>
@@ -64,19 +46,7 @@ export default function SecondaryListItems() {
         <ListItemIcon>
           <ExitToAppIcon />
         </ListItemIcon>
-        {/* <ListItemText primary="Current month" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" /> */}
+        <ListItemText primary="Sair" />
       </ListItem>
     </div>
   )
