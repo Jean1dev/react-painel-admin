@@ -1,5 +1,4 @@
-import React from 'react';
-import './App.css';
+import React from 'react'
 import { PersistGate } from 'redux-persist/integration/react'
 import { Provider } from 'react-redux'
 import Routes from './routes'
@@ -9,16 +8,16 @@ import history from './service/history'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function App() {
-  
+
   return (
     <Provider store={store}>
       <PersistGate persistor={persistor}>
         <Router history={history}>
-          <Routes></Routes>
+          <Routes />
         </Router>
-        </PersistGate>
+      </PersistGate>
     </Provider>
-  );
+  )
 }
 
-export default App;
+export default App
