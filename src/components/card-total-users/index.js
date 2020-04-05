@@ -5,6 +5,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import PeopleIcon from '@material-ui/icons/PeopleOutlined';
+import Spinner from '../loader'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -45,6 +46,20 @@ const TotalUsers = props => {
 
   const classes = useStyles();
 
+  const [loading, setLoading] = React.useState(true)
+  setTimeout(() => setLoading(false), 2000)
+
+  if (loading) {
+    return (
+      <Card
+        {...rest}
+        className={clsx(classes.root, className)}
+      >
+        <Spinner />
+      </Card>
+    )
+  }
+
   return (
     <Card
       {...rest}
@@ -62,7 +77,7 @@ const TotalUsers = props => {
               gutterBottom
               variant="body2"
             >
-              TOTAL USERS
+              TOTAL DE USUARIOS
             </Typography>
             <Typography variant="h3">1,600</Typography>
           </Grid>
@@ -84,7 +99,7 @@ const TotalUsers = props => {
             className={classes.caption}
             variant="caption"
           >
-            Since last month
+            no ultimo mes
           </Typography>
         </div>
       </CardContent>

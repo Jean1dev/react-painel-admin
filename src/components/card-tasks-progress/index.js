@@ -11,6 +11,7 @@ import {
   LinearProgress
 } from '@material-ui/core';
 import InsertChartIcon from '@material-ui/icons/InsertChartOutlined';
+import Spinner from '../loader'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -39,9 +40,21 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const TasksProgress = props => {
-  const { className, ...rest } = props;
-
   const classes = useStyles();
+  const { className, ...rest } = props;
+  const [loading, setLoading] = React.useState(true)
+  setTimeout(() => setLoading(false), 5000)
+
+  if (loading) {
+    return (
+      <Card
+        {...rest}
+        className={clsx(classes.root, className)}
+      >
+        <Spinner />
+      </Card>
+    )
+  }
 
   return (
     <Card
@@ -60,7 +73,7 @@ const TasksProgress = props => {
               gutterBottom
               variant="body2"
             >
-              TASKS PROGRESS
+              TAREFAS EM PROGRESSO
             </Typography>
             <Typography variant="h3">75.5%</Typography>
           </Grid>

@@ -38,7 +38,6 @@ function signOut() {
 }
 
 export function _signOut() {
-    console.log('action')
     return dispatch => {
         dispatch(signOut())
         history.push('/')

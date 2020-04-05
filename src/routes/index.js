@@ -2,10 +2,10 @@ import React from 'react'
 import { Switch } from 'react-router-dom'
 import Route from './Route'
 
-import Login from '../views/Login'
+import Login from '../views/login/Login'
 import Register from '../views/Register'
 import Dash from '../views/Dash'
-import Solicitacao from '../views/Solicitacoes'
+import Solicitacao from '../views/solicitacoes/Solicitacoes'
 
 export default function Routes() {
     return (

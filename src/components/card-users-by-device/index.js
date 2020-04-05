@@ -15,6 +15,7 @@ import LaptopMacIcon from '@material-ui/icons/LaptopMac';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import TabletMacIcon from '@material-ui/icons/TabletMac';
+import Spinner from '../loader'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -43,6 +44,19 @@ const UsersByDevice = props => {
 
   const classes = useStyles();
   const theme = useTheme();
+  const [loading, setLoading] = React.useState(true)
+  setTimeout(() => setLoading(false), 6000)
+
+  if (loading) {
+    return (
+      <Card
+        {...rest}
+        className={clsx(classes.root, className)}
+      >
+        <Spinner />
+      </Card>
+    )
+  }
 
   const data = {
     datasets: [
@@ -115,7 +129,7 @@ const UsersByDevice = props => {
             <RefreshIcon />
           </IconButton>
         }
-        title="Users By Device"
+        title="Usuarios por dispositivo"
       />
       <Divider />
       <CardContent>
