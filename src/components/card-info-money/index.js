@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles'
 import { Card, CardContent, Grid, Typography, Avatar } from '@material-ui/core';
 import AttachMoneyIcon from '@material-ui/icons/AttachMoney';
+import Spinner from '../loader'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -32,8 +33,21 @@ const useStyles = makeStyles(theme => ({
 
 const TotalProfit = props => {
   const { className, ...rest } = props;
+  const [loading, setLoading] = React.useState(true)
+  setTimeout(() => setLoading(false), 2000)
 
   const classes = useStyles();
+
+  if (loading) {
+    return (
+      <Card
+        {...rest}
+        className={clsx(classes.root, className)}
+      >
+        <Spinner />
+      </Card>
+    )
+  }
 
   return (
     <Card
@@ -52,7 +66,7 @@ const TotalProfit = props => {
               gutterBottom
               variant="body2"
             >
-              TOTAL PROFIT
+              TOTAL DE ECONOMIZADO
             </Typography>
             <Typography
               color="inherit"

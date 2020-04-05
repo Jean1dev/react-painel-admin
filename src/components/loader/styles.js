@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  margin-left: 50%;
-  margin-top: 50%;
+  margin-top: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `
